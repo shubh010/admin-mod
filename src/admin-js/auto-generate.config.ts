@@ -10,6 +10,7 @@ import { componentLoader } from './component.loader.js';
 import bcrypt from 'bcryptjs';
 import { LogModel } from '../schemas/Log.schema.js';
 import slugFeature from './features/slug.feature.js';
+import notificationFeature from './features/notification.feature.js';
 
 // const bcrypt = require('bcryptjs');
 
@@ -60,11 +61,7 @@ const getMimeTypes = (type: string) => {
   return mimeTypes;
 };
 
-export const getAutoGenerateResources = async ({
-  logging,
-}: {
-  logging: boolean;
-}) => {
+export const getAllModels = async () => {
   const models = await Model.aggregate([
     {
       $lookup: {
@@ -84,6 +81,15 @@ export const getAutoGenerateResources = async ({
       },
     },
   ]);
+  return models;
+};
+
+export const getAutoGenerateResources = async ({
+  logging,
+}: {
+  logging: boolean;
+}) => {
+  const models = await getAllModels();
 
   const resourcesSchema = generateSchemas(models);
   console.log(resourcesSchema);
@@ -93,7 +99,10 @@ export const getAutoGenerateResources = async ({
   });
 
   const resources = resourcesSchema.map((model, index) => {
-    const features = [importExportFeature({ componentLoader })];
+    const features = [
+      importExportFeature({ componentLoader }),
+      notificationFeature(),
+    ];
 
     if (logging) {
       features.push(

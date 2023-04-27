@@ -1,15 +1,15 @@
 import * as AdminJSMongoose from '@adminjs/mongoose';
-import AdminJS from 'adminjs';
 import { AdminModuleOptions } from '@adminjs/nestjs';
 import { getAutoGenerateResources } from './auto-generate.config.js';
 import { uploads } from './upload.config.js';
 import { Components, componentLoader } from './component.loader.js';
 
 import { dark, light, noSidebar } from '@adminjs/themes';
-import path from 'path';
 import { fileURLToPath } from 'url';
 import { overrides } from '../themes/my-custom-theme/overrides.js';
 import { dashboardHandler } from './dashboard/index.js';
+
+import AdminJS, { AdminJSOptions } from 'adminjs';
 
 AdminJS.registerAdapter({
   Resource: AdminJSMongoose.Resource,
@@ -41,29 +41,36 @@ const authenticate = async (email: string, password: string) => {
 export const getAdminConfig = async () => {
   const { resources, autoGenerateModelResources } =
     await getAutoGenerateResources({ logging: false });
+
+  const adminJsOptions: AdminJSOptions = {
+    branding: {
+      companyName: 'New Admin',
+      withMadeWithLove: false,
+      logo: '',
+    },
+    defaultTheme: myCustomTheme.id,
+    availableThemes: [dark, light, noSidebar, myCustomTheme],
+    settings: {
+      defaultPerPage: 30,
+    },
+    rootPath: '/admin',
+    componentLoader: componentLoader,
+    dashboard: {
+      handler: dashboardHandler,
+      component: Components.Dashboard,
+    },
+
+    resources: [...resources, ...autoGenerateModelResources, uploads],
+    pages: {
+      about: {
+        component: Components.AboutPage,
+      },
+    },
+  };
+
   const adminConfig: AdminModuleOptions = {
     shouldBeInitialized: true,
-
-    adminJsOptions: {
-      branding: {
-        companyName: 'New Admin',
-        withMadeWithLove: false,
-        logo: '',
-      },
-      defaultTheme: light.id,
-      availableThemes: [dark, light, noSidebar, myCustomTheme],
-      settings: {
-        defaultPerPage: 30,
-      },
-      rootPath: '/admin',
-      componentLoader: componentLoader,
-      dashboard: {
-        handler: dashboardHandler,
-        component: Components.Dashboard,
-      },
-
-      resources: [...resources, ...autoGenerateModelResources, uploads],
-    },
+    adminJsOptions: adminJsOptions,
     // auth: {
     //   authenticate,
     //   cookieName: 'adminjs',

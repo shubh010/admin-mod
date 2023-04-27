@@ -1,5 +1,5 @@
 :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   .ihbClS {
@@ -12,13 +12,13 @@
   
   [data-css='sidebar']::-webkit-scrollbar-track {
     border-radius: 0;
-    background-color: #0c0b10;
+    background-color: #fff;
   }
   
   [data-css='sidebar']::-webkit-scrollbar-thumb {
-    background: #fff;
+    background: #ddd;
     border-radius: 100vh;
-    border: 3px solid #fff;
+    border: 3px solid #ddd;
   }
   
   [data-css='sidebar']::-webkit-scrollbar-thumb:hover {
@@ -26,22 +26,27 @@
   }
   
   [data-css='sidebar'] {
-    background: #0c0b10!important;
+    background: #fff!important;
+    box-shadow: 1px 1px 10px #aeaeae;
+  }
+
+  [data-css='sidebar'] ul li{
+    transition:all 5s;
   }
 
 
   [data-css='default-dashboard'] section:last-of-type {
-    background-color: transparent;
+    background-color: #8884d8;
   }
   
   [data-css='default-dashboard'] + section svg [fill='#0C1E29'] {
-    fill: rgba(255, 255, 255, 1);
+    fill: rgba(0, 0, 0, 1);
   }
   
   [data-css='default-dashboard'] + section svg [stroke='#3B3552'] {
-    stroke: rgba(255, 255, 255, 0.8);
+    stroke: rgba(0, 0, 0, 0.8);
   }
-  
+/*   
   .adminjs_PhoneInput .form-control,
   .adminjs_PhoneInput .flag-dropdown {
     background-color: transparent !important;
@@ -72,4 +77,4 @@
   
   .adminjs_DatePicker .react-datepicker-wrapper {
     border-color: rgba(145, 158, 171, 0.32) !important;
-  }
+  } */
