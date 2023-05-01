@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Area,
   Bar,
@@ -6,12 +6,13 @@ import {
   ComposedChart,
   Legend,
   Line,
+  Scatter,
   Tooltip,
   XAxis,
   YAxis,
 } from 'recharts';
 
-import { CheckBox, CheckBoxProps, Box, Label } from '@adminjs/design-system';
+import { Box } from '@adminjs/design-system';
 
 export const ChartItem = ({
   data,
@@ -37,6 +38,7 @@ export const ChartItem = ({
           <option value="Bar">Bar</option>
           <option value="Line">Line</option>
           <option value="Area">Area</option>
+          <option value="Scatter">Scatter</option>
         </select>
       </Box>
 
@@ -62,6 +64,10 @@ export const ChartItem = ({
 
         {(mode === 'All' || mode === 'Line') && (
           <Line type="monotone" dataKey={lineField} stroke="#8884d8" />
+        )}
+
+        {(mode === 'All' || mode === 'Scatter') && (
+          <Scatter dataKey="count" fill="#8884d8" />
         )}
       </ComposedChart>
     </div>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   Box,
-  Button,
   H2,
   H5,
   Illustration,
@@ -9,22 +8,9 @@ import {
   Text,
 } from '@adminjs/design-system';
 import { styled } from '@adminjs/design-system/styled-components';
-import { ApiClient, Filter, useTranslation } from 'adminjs';
+import { ApiClient, useTranslation } from 'adminjs';
 import moment from 'moment';
 
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  BarChart,
-  Bar,
-  ComposedChart,
-  Area,
-} from 'recharts';
 import { ChartItem } from './ChartItem.js';
 
 const pageHeaderHeight = 284;
@@ -82,7 +68,13 @@ const boxes = ({ translateMessage }): Array<BoxType> => [
     variant: 'Planet',
     title: translateMessage('addingResources_title'),
     subtitle: translateMessage('addingResources_subtitle'),
-    href: 'https://adminjs.co/tutorial-passing-resources.html',
+    href: '#',
+  },
+  {
+    variant: 'Planet',
+    title: translateMessage('addingResources_title'),
+    subtitle: translateMessage('addingResources_subtitle'),
+    href: '#',
   },
 ];
 
@@ -206,24 +198,6 @@ export const Dashboard: React.FC = () => {
             </Card>
           </Box>
         ))}
-
-        <Card width={1} m="lg">
-          <Text textAlign="center">
-            <Illustration variant="AdminJSLogo" />
-            <H5>{translateMessage('needMoreSolutions_title')}</H5>
-            <Text>{translateMessage('needMoreSolutions_subtitle')}</Text>
-            <Text mt="xxl">
-              <Button
-                as="a"
-                variant="contained"
-                href="https://share.hsforms.com/1IedvmEz6RH2orhcL6g2UHA8oc5a"
-                target="_blank"
-              >
-                {translateButton('contactUs')}
-              </Button>
-            </Text>
-          </Text>
-        </Card>
       </Box>
     </Box>
   );

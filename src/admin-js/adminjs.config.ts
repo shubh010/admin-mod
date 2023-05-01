@@ -7,7 +7,7 @@ import { Components, componentLoader } from './component.loader.js';
 import { dark, light, noSidebar } from '@adminjs/themes';
 import { fileURLToPath } from 'url';
 import { overrides } from '../themes/my-custom-theme/overrides.js';
-import { dashboardHandler } from './dashboard/index.js';
+import { dashboardHandler } from './frontend/dashboard.js';
 
 import AdminJS, { AdminJSOptions } from 'adminjs';
 
@@ -48,7 +48,7 @@ export const getAdminConfig = async () => {
       withMadeWithLove: false,
       logo: '',
     },
-    defaultTheme: myCustomTheme.id,
+    defaultTheme: light.id,
     availableThemes: [dark, light, noSidebar, myCustomTheme],
     settings: {
       defaultPerPage: 30,
@@ -57,7 +57,7 @@ export const getAdminConfig = async () => {
     componentLoader: componentLoader,
     dashboard: {
       handler: dashboardHandler,
-      component: Components.Dashboard,
+      component: Components.DashboardHome,
     },
 
     resources: [...resources, ...autoGenerateModelResources, uploads],
