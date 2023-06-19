@@ -40,7 +40,7 @@ const authenticate = async (email: string, password: string) => {
 
 export const getAdminConfig = async () => {
   const { resources, autoGenerateModelResources } =
-    await getAutoGenerateResources({ logging: false });
+    await getAutoGenerateResources({ logging: true });
 
   const adminJsOptions: AdminJSOptions = {
     branding: {
@@ -71,16 +71,16 @@ export const getAdminConfig = async () => {
   const adminConfig: AdminModuleOptions = {
     shouldBeInitialized: true,
     adminJsOptions: adminJsOptions,
-    // auth: {
-    //   authenticate,
-    //   cookieName: 'adminjs',
-    //   cookiePassword: 'secret_c',
-    // },
-    // sessionOptions: {
-    //   resave: false,
-    //   saveUninitialized: true,
-    //   secret: 'secret_c',
-    // },
+    auth: {
+      authenticate,
+      cookieName: 'adminjs',
+      cookiePassword: 'secret_c',
+    },
+    sessionOptions: {
+      resave: false,
+      saveUninitialized: true,
+      secret: 'secret_c',
+    },
   };
 
   return adminConfig;

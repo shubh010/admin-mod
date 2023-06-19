@@ -209,7 +209,7 @@ export const selfFind = async ({
 }) => {
   const primary_ref = model.fields.filter(
     (item) => item.primary_ref === true,
-  )[0].field_name;
+  )[0]!.field_name;
 
   const refs = model.fields
     .filter((item) => item.ref !== undefined)
