@@ -3,10 +3,10 @@ import { File } from '../schemas/file.schema.js';
 import { componentLoader } from './component.loader.js';
 
 export const AWScredentials = {
-  accessKeyId: 'AKIAQDEENMG732VTIBP2',
-  secretAccessKey: '/WH8miBq0Hq8mi3UnyfnSdfuzpwWJDgsi3PNfO8d',
-  region: 'eu-west-2',
-  bucket: 'quikbook',
+  accessKeyId: '', // Your AWS Access Key
+  secretAccessKey: '', // Your AWS Secret Access Key
+  region: '', // Your AWS account region
+  bucket: '', // Your AWS bucket name
 };
 
 export const uploads = {
