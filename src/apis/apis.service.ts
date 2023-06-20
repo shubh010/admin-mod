@@ -206,7 +206,14 @@ export class ApisService {
   async customQuery(
     modelName,
     request,
-    data: { query: any; orderBy: any; populate: any; page: any; limit: any },
+    data: {
+      query: any;
+      orderBy: any;
+      populate: any;
+      page: any;
+      limit: any;
+      project: any;
+    },
   ) {
     return customQueryCURD({ request, data, modelName });
   }

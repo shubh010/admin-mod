@@ -372,7 +372,14 @@ export const customQueryCURD = async ({
 }: {
   request: any;
   modelName: string;
-  data: { query: any; orderBy: any; populate: any; page: any; limit: any };
+  data: {
+    query: any;
+    orderBy: any;
+    populate: any;
+    page: any;
+    limit: any;
+    project: any;
+  };
 }) => {
   if (request['headers'].x_api_key === constants.x_api_key) {
     const { schema, model } = await getModel(modelName);
@@ -386,7 +393,7 @@ export const customQueryCURD = async ({
 
     try {
       const result = await schema
-        .find(data.query)
+        .find(data.query, { ...data.project })
         .sort(data.orderBy)
         .populate(data.populate)
         .skip(skip)
@@ -400,6 +407,7 @@ export const customQueryCURD = async ({
         result,
       };
     } catch (err) {
+      console.log(err);
       throw new BadRequestException({ message: 'Something went wrong', err });
     }
   } else {

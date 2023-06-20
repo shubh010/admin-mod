@@ -1,13 +1,7 @@
 import uploadFeature from '@adminjs/upload';
 import { File } from '../schemas/file.schema.js';
 import { componentLoader } from './component.loader.js';
-
-export const AWScredentials = {
-  accessKeyId: 'AKIAQDEENMG732VTIBP2',
-  secretAccessKey: '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',
-  region: 'eu-west-2',
-  bucket: 'quikbook',
-};
+import { AWScredentials } from '../const.js';
 
 export const uploads = {
   resource: File,

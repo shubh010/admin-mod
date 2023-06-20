@@ -40,3 +40,5 @@ lerna-debug.log*
 /.vscode
 /dist
 /.rollup.cache
+
+/src/const.ts

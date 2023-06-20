@@ -5,12 +5,12 @@ import loggerFeature from '@adminjs/logger';
 import { ModelGroup } from '../schemas/model-group.schema.js';
 import { Model } from '../schemas/model-schema.js';
 import uploadFeature from '@adminjs/upload';
-import { AWScredentials } from './upload.config.js';
 import { componentLoader } from './component.loader.js';
 import bcrypt from 'bcryptjs';
 import { LogModel } from '../schemas/Log.schema.js';
 import slugFeature from './features/slug.feature.js';
 import notificationFeature from './features/notification.feature.js';
+import { AWScredentials } from '../const.js';
 
 // const bcrypt = require('bcryptjs');
 
